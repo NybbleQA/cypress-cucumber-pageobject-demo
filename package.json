@@ -1,0 +1,36 @@
+{
+  "name": "cyp10plus-demo",
+  "version": "1.0.0",
+  "description": "project to test instructions guideline",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "cypress:run_spec": "cypress run --spec **/*.feature",
+    "cypress:execution-tags": "cypress run --env tags=@todoly",
+    "cypress:execution-allure": "cypress run --env allure=true",
+    "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:open": "allure open",
+    "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true"
+  },
+  "keywords": [
+    "qa",
+    "testing",
+    "cypress",
+    "javascript"
+  ],
+  "author": "fede",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
+    "@shelex/cypress-allure-plugin": "^2.34.0",
+    "cypress": "^12.3.0",
+    "esbuild": "^0.16.4",
+    "multiple-cucumber-html-reporter": "^3.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}
