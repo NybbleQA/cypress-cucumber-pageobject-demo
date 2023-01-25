@@ -1,4 +1,4 @@
-1) *Global dependencies
+******************************** 1) GLOBAL DEPENDENCIES ********************************
 
 	- Node.JS --> Ver. 16.17.0 (Windows - Current)
 		https://nodejs.org/ (LTS VERSION IF POSSIBLE)
@@ -19,14 +19,14 @@
 	- (Desired-Optional) Java 8 (for running Allure reports)
 
 
-2) *General annotations/acronyms
+******************************** 2) GENERAL ANNOTATIONS/ACRONYMS ********************************
 
 	"Execute" = to run a command by console line (bash/powershell/cmd)
 
 	"CL" = command line
 
 	"RegEx" = regular expressions
-	
+
 	"POM" = page object model 
 
 ******************************** 3) CREATING FIRST PROJECT FROM SCRATCH ********************************
