@@ -22,8 +22,11 @@
 2) *General annotations/acronyms
 
 	"Execute" = to run a command by console line (bash/powershell/cmd)
+
 	"CL" = command line
+
 	"RegEx" = regular expressions
+	
 	"POM" = page object model 
 
 ******************************** 3) CREATING FIRST PROJECT FROM SCRATCH ********************************
@@ -315,7 +318,7 @@
 		existing images and verify it was created as "your_project_image"
 
 		- in CL, execute "docker run you_project_image"
-		
+
 
 		************************ 7) INTEGRATE GITHUB ACTIONS ************************
 
