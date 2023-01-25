@@ -14,13 +14,14 @@ jobs:
         #os: [ubuntu-latest, macos-latest, windows-latest]
         browsers: [firefox, chrome, edge]
     steps:
+    # Checkout a Git repository at a particular version
       - name: Checkout
         uses: actions/checkout@v3
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
       - name: Cypress run
-        uses: cypress-io/github-action@v5 # use the explicit version number
-        with:
+        uses: cypress-io/github-action@v5 # use the explicit version number for this action
+        with:                             
           browser: ${{ matrix.browsers }}
           build: npm install
           start: npm run cypress:run
