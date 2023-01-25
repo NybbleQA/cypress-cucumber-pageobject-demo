@@ -315,3 +315,52 @@
 		existing images and verify it was created as "your_project_image"
 
 		- in CL, execute "docker run you_project_image"
+		
+
+		************************ 7) INTEGRATE GITHUB ACTIONS ************************
+
+		************* 7.1)  CREATING .YML FILE *************
+
+		- First, this project should be working as intended and uploaded to a remote
+		repository on github.
+
+		- Inside the project folde, create a folder namde ".github"
+		- Inside ".github" folder, create a folder named "workflows"
+		- Inside "./.github/workflows" create a file named "run_tests.yml"
+
+		-inside "run_tests.yml", paste the following code:
+
+				name: Cypress Tests
+
+				on: 
+				  push:
+				    branches:
+				      - main
+
+				jobs:
+				  cypress-run:
+				    runs-on: ubuntu-18.04
+				    strategy:
+				      fail-fast: false #debuggin param - turn off before deploying to prod
+				      matrix:
+				        #os: [ubuntu-latest, macos-latest, windows-latest]
+				        browsers: [firefox, chrome, edge]
+				    steps:
+				      - name: Checkout
+				        uses: actions/checkout@v3
+				      # Install NPM dependencies, cache them correctly
+				      # and run all Cypress tests
+				      - name: Cypress run
+				        uses: cypress-io/github-action@v5 # use the explicit version number
+				        with:
+				          browser: ${{ matrix.browsers }}
+				          build: npm install
+				          start: npm run cypress:run 
+
+		(NOTE: indentation is key to .yml files, this code block is tabulated x2)
+		(NOTE2: "YAML" extension for VSCode users is recommended)
+
+	- Save changes, and add-commit-push them to trigger the github actions run to start
+
+
+	********************************************************************************
