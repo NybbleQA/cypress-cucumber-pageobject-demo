@@ -24,9 +24,13 @@ jobs:
       
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
+      - name: get node version
+        run: node -v
+
       - name: Cypress run
         uses: cypress-io/github-action@v5 # use the exaplicit version number for this action
         with:                             
           browser: ${{ matrix.browsers }}
-          build: npm install
+          build: npm install verbose
           start: npm run cypress:run
+      
