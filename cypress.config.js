@@ -14,13 +14,15 @@ async function setupNodeEvents(on, config) {
       plugins: [createEsbuildPlugin.default(config)],
     })
   );
-  allureWriter(on, config);
+  require('cypress-mochawesome-reporter/plugin')(on);
+  //allureWriter(on, config);
 
   // Make sure to return the config object as it might have been modified by the plugin.
   return config;
 }
 
 module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
   e2e: {
     setupNodeEvents,//(on, config) {
       // implement node event listeners here

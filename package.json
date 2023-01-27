@@ -27,6 +27,7 @@
     "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5",
     "@shelex/cypress-allure-plugin": "^2.34.0",
     "cypress": "^12.3.0",
+    "cypress-mochawesome-reporter": "^3.2.3",
     "esbuild": "^0.16.4",
     "multiple-cucumber-html-reporter": "^3.0.1"
   },
