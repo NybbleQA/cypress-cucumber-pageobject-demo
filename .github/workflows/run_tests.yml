@@ -38,5 +38,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test reports
-          path: /home/runner/work/cypress-cucumber-demo/cypress-cucumber-demo/cypress/reports
+          path: /home/runner/work/cypress-cucumber-pageobject-demo/cypress-cucumber-pageobject-demo/cypress/reports
       
