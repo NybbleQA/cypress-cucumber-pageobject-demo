@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-18.04
 
     steps:
-    # Checkout a Git repository at a particular version under $GITHUB_WORKSPACE,
+    ## Checkout a Git repository at a particular version under $GITHUB_WORKSPACE,
     # so your workflow can access it
       - name: Checkout
         uses: actions/checkout@v3
