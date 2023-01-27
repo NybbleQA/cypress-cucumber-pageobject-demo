@@ -14,7 +14,19 @@ async function setupNodeEvents(on, config) {
       plugins: [createEsbuildPlugin.default(config)],
     })
   );
+ 
   require('cypress-mochawesome-reporter/plugin')(on);
+  // on('before:run', async (details) => {
+  //   console.log('override before:run');
+  //   await beforeRunHook(details);
+  // });
+
+  // on('after:run', async () => {
+  //   console.log('override after:run');
+  //   await afterRunHook();
+  // });
+
+
   //allureWriter(on, config);
 
   // Make sure to return the config object as it might have been modified by the plugin.
@@ -31,7 +43,7 @@ module.exports = defineConfig({
     baseUrl: "https://www.todo.ly",
     chromeWebSecurity: false,
     env: {
-    allureReuseAfterSpec: true,
+    allureReuseAfterSpec: false,
     },
   },
 });
