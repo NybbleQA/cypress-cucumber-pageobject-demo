@@ -12,7 +12,7 @@ jobs:
       matrix:
         #os: [ubuntu-latest, macos-latest, windows-latest]
         browsers: [firefox, chrome, edge]
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
 
     steps:
     ## Checkout a Git repository at a particular version under $GITHUB_WORKSPACE,
@@ -30,9 +30,10 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v5 # use the exaplicit version number for this action
         with:                             
-          browser: ${{ matrix.browsers }}
+          #browser: ${{ matrix.browsers }}
           build: npm install verbose
-          start: npm run cypress:run
+          # start: npm run cypress:run
+          run: npm run cypress:run -- --browser ${{ matrix.browsers }
 
       - name: artifacts
         uses: actions/upload-artifact@v3
