@@ -33,7 +33,7 @@ jobs:
           #browser: ${{ matrix.browsers }}
           build: npm install verbose
           # start: npm run cypress:run
-          run: npm run cypress:run --browser ${{ matrix.browsers }}
+          start: npm run cypress:run --browser ${{ matrix.browsers }}
 
       - name: artifacts
         uses: actions/upload-artifact@v3
