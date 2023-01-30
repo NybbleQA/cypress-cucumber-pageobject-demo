@@ -1,3 +1,20 @@
+[![Cypress Tests](https://github.com/NybbleQA/cypress-cucumber-pageobject-demo/actions/workflows/run_tests.yml/badge.svg)](https://github.com/NybbleQA/cypress-cucumber-pageobject-demo/actions/workflows/run_tests.yml)
+
+
+#####	TL;DR README	##### 
+
+		# DEPENDENCIES
+			- NODE.JS 16
+			- DOCKER ver. 20
+			- GITHUB ACCOUNT
+
+		# INSTALLATION
+			- run "npm install" in CLI, inside the project's folder
+		
+		# RUN
+
+			- run "npm run cypress:run" in CLI, inside the project's folder
+
 ******************************** 1) GLOBAL DEPENDENCIES ********************************
 
 	- Node.JS --> Ver. 16.17.0 (Windows - Current)
@@ -336,31 +353,46 @@
 				name: Cypress Tests
 
 				on: 
-				  push:
-				    branches:
-				      - main
+				push:
+					branches:
+					- main
 
 				jobs:
-				  cypress-run:
-				    runs-on: ubuntu-18.04
-				    strategy:
-				      fail-fast: false #debuggin param - turn off before deploying to prod
-				      matrix:
-				        #os: [ubuntu-latest, macos-latest, windows-latest]
-				        browsers: [firefox, chrome, edge]
-				    steps:
-				      - name: Checkout
-				        uses: actions/checkout@v3
-				      # Install NPM dependencies, cache them correctly
-				      # and run all Cypress tests
-				      - name: Cypress run
-				        uses: cypress-io/github-action@v5 # use the explicit version number
-				        with:
-				          browser: ${{ matrix.browsers }}
-				          build: npm install
-				          start: npm run cypress:run 
+				cypress-run:
+					strategy:
+					fail-fast: false #debuggin param - turn off before deploying to prod
+					matrix:
+						#os: [ubuntu-latest, macos-latest, windows-latest]
+						browsers: [firefox, chrome, edge]
+					runs-on: ubuntu-22.04
 
-		(NOTE: indentation is key to .yml files, this code block is tabulated x2)
+					steps:
+					## Checkout a Git repository at a particular version under $GITHUB_WORKSPACE,
+					# so your workflow can access it
+					- name: Checkout
+						uses: actions/checkout@v3
+						with:
+						fetch-depth: 0 #only will use last commit 
+					
+					- name: Setup Node.js
+						uses: actions/setup-node@v2
+						with:
+						node-version: 16
+					
+					- name: Install Dependencies
+						run: npm ci
+					
+					- name: Run Cypress Tests
+						run: npm run cypress:run -- --browser ${{ matrix.browser }}
+
+					- name: artifacts
+						if: ${{ failure() || success()}}
+						uses: actions/upload-artifact@v3
+						with:
+						name: ${{ matrix.browsers }}-test-reports
+						path: /home/runner/work/cypress-cucumber-pageobject-demo/cypress-cucumber-pageobject-demo/cypress/reports
+
+		(NOTE: indentation is key to .yml files, this code block is tabulated x2 after README.md tabulation)
 		(NOTE2: "YAML" extension for VSCode users is recommended)
 
 	- Save changes, and add-commit-push them to trigger the github actions run to start
