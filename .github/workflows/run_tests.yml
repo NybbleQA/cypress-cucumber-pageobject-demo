@@ -22,22 +22,21 @@ jobs:
         with:
           fetch-depth: 0 #only will use last commit 
       
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: get node version
-        run: node -v
-
-      - name: Cypress run
-        uses: cypress-io/github-action@v5 # use the exaplicit version number for this action
-        with:                             
-          #browser: ${{ matrix.browsers }}
-          build: npm install verbose
-          # start: npm run cypress:run
-          start: npm run cypress:run --browser ${{ matrix.browsers }}
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+    
+      - name: Install Dependencies
+        run: npm ci
+    
+      - name: Run Cypress Tests
+        run: npm run cypress:run -- --browser ${{ matrix.browser }}
 
       - name: artifacts
+        if: ${{ failure() || success()}}
         uses: actions/upload-artifact@v3
         with:
-          name: test reports
+          name: ${{ matrix.browsers }}-test-reports
           path: /home/runner/work/cypress-cucumber-pageobject-demo/cypress-cucumber-pageobject-demo/cypress/reports
       
