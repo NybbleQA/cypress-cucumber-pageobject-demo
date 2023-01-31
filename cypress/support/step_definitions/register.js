@@ -14,17 +14,17 @@ When("user clicks on [Sign Up Free] button on todo.ly main page", () =>
 
 When("types 'test' in [Full Name] textbox", () =>
 {
-    signupModal.typeFullName("test");
+    signupModal.typeText("fullName","test2")
 })
 
 When("types a random string plus '@email.com' in [Email] textbox", () =>
 {
-    signupModal.typeEmail(asd);
+    signupModal.typeText('email', asd)
 })
 
 When("types '12345' in [Password] signup textbox", () =>
 {
-    signupModal.typePassword("12345")
+    signupModal.typeText('password', asd)
 })
 
 When("checks [Terms of Service] checkbox", () =>

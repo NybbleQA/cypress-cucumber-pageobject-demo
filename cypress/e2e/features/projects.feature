@@ -16,18 +16,24 @@ Feature: Projects CRUD
     # When 
     # And 
     # Then 
-    #
-    Scenario: Successful creation of a new project
- 
-    When 
-    And 
-    Then 
-    #
-    Scenario: Successful update of a created project
 
-    Given 
-    When 
-    And 
-    Then 
     #
-    Scenario: Delete an existing project successfully
+
+     Scenario: Successful creation of a new project
+ 
+     When user clicks [Add New Project] button
+     And types a random string in [New Project Name] textbox
+     And clicks [Add] button
+     Then project should be created
+    # And project should be displayed with the random string as name
+    
+    #
+
+    # Scenario: Successful update of a created project
+
+    # Given 
+    # When 
+    # And 
+    # Then 
+    # #
+    # Scenario: Delete an existing project successfully

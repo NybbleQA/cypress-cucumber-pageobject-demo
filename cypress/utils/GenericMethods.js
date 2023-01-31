@@ -3,6 +3,18 @@ class GenericMethods
 {
      //GenericMethods()
 
+        getElementName(element) 
+        {
+            for (const key in this.elements) 
+            {
+            if (this.elements[key] === element) 
+            {
+                return key;
+            }
+            }
+            return 'Element not found';
+        }
+
         makeid(length) 
         {
             var result           = '';

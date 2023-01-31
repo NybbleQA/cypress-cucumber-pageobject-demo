@@ -37,6 +37,24 @@ class SignupModal
         this.elements.signUpBtn().click();
     }
 
+    // BETTER PRACTICES CODE
+
+    typeText(fieldName, text) {
+        switch (fieldName) {
+          case 'fullName':
+            this.elements.fullNameTxtBox().type(text);
+            break;
+          case 'email':
+            this.elements.emailTxtBox().type(text);
+            break;
+          case 'password':
+            this.elements.passwordTxtBox().type(text);
+            break;
+          default:
+            throw new Error(`Field "${fieldName}" not found.`);
+        }
+      }
+
 }
 
 export const signupModal = new SignupModal();
