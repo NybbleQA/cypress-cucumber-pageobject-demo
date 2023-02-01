@@ -3,15 +3,15 @@
 
 #####	TL;DR README	##### 
 
-		# DEPENDENCIES
+		## DEPENDENCIES ##
 			- NODE.JS 16
 			- DOCKER ver. 20
 			- GITHUB ACCOUNT
 
-		# INSTALLATION
+		## INSTALLATION ##
 			- run "npm install" in CLI, inside the project's folder
 		
-		# RUN
+		## RUN TESTS ##
 
 			- run "npm run cypress:run" in CLI, inside the project's folder
 

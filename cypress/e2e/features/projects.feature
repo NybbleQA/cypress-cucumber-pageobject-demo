@@ -35,5 +35,11 @@ Feature: Projects CRUD
     # When 
     # And 
     # Then 
+
     # #
+
     # Scenario: Delete an existing project successfully
+
+    # When 
+    # And 
+    # Then 
