@@ -6,7 +6,7 @@ Feature: Projects CRUD
 
     Given user enters todo.ly main page
     And user clicks on [Login] button on todo.ly main page
-    And types 'fhr1@fhr1.com' in [Email] textbox  
+    And user types 'fhr1@fhr1.com' in [Email] textbox  
     And types '12345' in [Password] textbox  
     And clicks [Login] button on Login modal
 

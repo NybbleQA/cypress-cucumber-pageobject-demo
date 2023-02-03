@@ -20,3 +20,19 @@ require('@cypress/xpath');
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// BeforeAll(() => {
+//     // logic for BeforeAll hook
+//   });
+  
+//   Before(() => {
+//     // logic for Before hook
+//   });
+  
+//   After(() => {
+//     // logic for After hook
+//   });
+  
+//   AfterAll(() => {
+//     // logic for AfterAll hook
+//   });

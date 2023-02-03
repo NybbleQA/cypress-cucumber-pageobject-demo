@@ -27,3 +27,7 @@ Feature: Register
 
     # Then user should not be registered 
     # test throug request->response code
+    # |   fullName    |   email   |   password    |
+    # |               |   asd@asd.com    |   12345   |
+    # |   Fede    |           |   12345   |
+    # |   Fede    |   asd@asd2.com    |           |

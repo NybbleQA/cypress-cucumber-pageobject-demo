@@ -19,7 +19,7 @@ When("user clicks on [Login] button on todo.ly main page", () =>
         mainPage.clickLogin();
     });
 
-When("types 'fhr1@fhr1.com' in [Email] textbox", () => 
+When("user types 'fhr1@fhr1.com' in [Email] textbox", () => 
     {
         loginModal.typeEmail(email2)
         //loginModal.typeRegisteredEmail(email2)
