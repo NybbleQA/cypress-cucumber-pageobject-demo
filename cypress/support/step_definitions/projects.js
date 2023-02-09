@@ -5,7 +5,7 @@ import { homePage } from "@pages/HomePage";
 import { genericMethods } from "cypress/utils/GenericMethods";
 
 randomProjectName = "cy.project_" + genericMethods.makeid(5);
-var initialCount;
+
 
 When("user clicks [Add New Project] button", () =>
 {
@@ -19,11 +19,7 @@ When("types a random string in [New Project Name] textbox", () =>
 
 When("clicks [Add] button", () =>
 {
-    //homePage.elements.projectsList().its('childElementCount').then(initialCount =>
-        //{
-            homePage.clickButton('addConfirmation');
-
-        //})
+    homePage.clickButton('addConfirmation');
 })
 
 Then("project should be created", () =>
@@ -41,3 +37,37 @@ Then("project should be created", () =>
     //.should('equal', initialCount + 1);
 })
 
+//Scenario: Successful update of a created project
+
+Given("a project is created with {string} as name", function(string)
+{
+    homePage.clickButton("addProject");
+    homePage.typeText('newProjectTextbox' ,string);
+    homePage.clickButton('addConfirmation');
+})
+
+When("user clicks [Options] button for the project named {string}",function(string)
+{
+    homePage.searchProjectMenuBtn(string).click({force: true});
+})
+
+When("clicks [Edit] button on project's options menu", function()
+{
+    homePage.clickButton('editProject');
+})
+
+When("types {string} in the project's name textbox", function(string)
+{
+    homePage.clearText('editProjectTextbox');
+    homePage.typeText('editProjectTextbox', string);
+})
+
+When("clicks [Save] button", function()
+{
+    homePage.clickButton("saveProject");
+})
+
+Then("the project name should change to {string}", function(string)
+{
+    homePage.searchLastMatchingProject(string).should('be.visible');
+})

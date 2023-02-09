@@ -10,14 +10,6 @@ Feature: Projects CRUD
     And types '12345' in [Password] textbox  
     And clicks [Login] button on Login modal
 
-    # Scenario Outline: Scenario Outline name
-    
-    # Given  
-    # When 
-    # And 
-    # Then 
-
-    #
 
      Scenario: Successful creation of a new project
  
@@ -29,12 +21,14 @@ Feature: Projects CRUD
     
     #
 
-    # Scenario: Successful update of a created project
+    Scenario: Successful update of a created project
 
-    # Given 
-    # When 
-    # And 
-    # Then 
+    Given a project is created with "test" as name
+    When user clicks [Options] button for the project named "test"
+    And clicks [Edit] button on project's options menu
+    And types "EDITED_PROJECT" in the project's name textbox
+    And clicks [Save] button
+    Then the project name should change to "EDITED_PROJECT"
 
     # #
 

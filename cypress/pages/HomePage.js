@@ -7,7 +7,12 @@ class HomePage
         xpath_projectsList: () => cy.xpath(),
         addProjectBtn: () => cy.get('.AddProjectLiDiv > .ProjItemTable > tbody > tr > .ProjItemContent'),
         newProjectTextbox: () => cy.get('#NewProjNameInput'),
-        addConfirmationBtn: () => cy.get('#NewProjNameButton')
+        addConfirmationBtn: () => cy.get('#NewProjNameButton'),
+        editProjectTextbox: () => cy.xpath("//td[@class]//input[@id='ItemEditTextbox']"),
+        saveProjectBtn: () => cy.xpath("//td[@class]//img[@id='ItemEditSubmit']"),
+
+        //PROJECT MENU BUTTONS
+        editProjectBtn: () => cy.xpath("//ul[@id='projectContextMenu']//a[@href='#edit']")
     }
 
     // clickLogoutBtn()
@@ -43,6 +48,13 @@ class HomePage
             case 'addConfirmation':
                 this.elements.addConfirmationBtn().click();
                 break;
+            case 'editProject':
+                this.elements.editProjectBtn().click();
+                break;
+            case 'saveProject':
+                this.elements.saveProjectBtn().click();
+                break;
+
             default:
                 throw new Error(`Button "${buttonName}" not found.`);
         }
@@ -55,6 +67,26 @@ class HomePage
             case 'newProjectTextbox':
                 this.elements.newProjectTextbox().type(text)
                 break;
+            case 'editProjectTextbox':
+                this.elements.editProjectTextbox().type(text)
+                break;
+            default:
+                throw new Error(`Button "${buttonName}" not found.`);
+        }
+    }
+
+    clearText(fieldName)
+    {
+        switch(fieldName)
+        {
+            case 'newProjectTextbox':
+                this.elements.newProjectTextbox().clear();
+                break;
+            case 'editProjectTextbox':
+                this.elements.editProjectTextbox().clear();
+                break;
+            default:
+                throw new Error(`Button "${buttonName}" not found.`);
         }
     }
 
@@ -66,6 +98,11 @@ class HomePage
     searchLastMatchingProject(projectName)
     {   
         return cy.xpath("(//ul//li//td[text()='"+ projectName +"'])[last()]")
+    }
+
+    searchProjectMenuBtn(projectName)
+    {
+        return cy.xpath("//li[last()]//td[text()='" + projectName + "']//following-sibling::td//img")
     }
 
 }
