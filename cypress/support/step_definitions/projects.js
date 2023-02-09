@@ -71,3 +71,21 @@ Then("the project name should change to {string}", function(string)
 {
     homePage.searchLastMatchingProject(string).should('be.visible');
 })
+
+
+//Scenario: Delete an existing project successfully
+
+When("clicks [Delete] button on project's option menu", function()
+{
+    homePage.clickButton('deleteProject');
+})
+
+// When("accepts the alert pop-up", function()
+// {
+
+// })
+
+Then("the project named {string} should be deleted successfully", function(string)
+{
+    //homePage.searchLastMatchingProject(string).should('not.be.visible');
+})

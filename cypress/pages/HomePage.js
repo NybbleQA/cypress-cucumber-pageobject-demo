@@ -12,7 +12,8 @@ class HomePage
         saveProjectBtn: () => cy.xpath("//td[@class]//img[@id='ItemEditSubmit']"),
 
         //PROJECT MENU BUTTONS
-        editProjectBtn: () => cy.xpath("//ul[@id='projectContextMenu']//a[@href='#edit']")
+        editProjectBtn: () => cy.xpath("//ul[@id='projectContextMenu']//a[@href='#edit']"),
+        deleteProjectBtn: () => cy.xpath("//ul[@id='projectContextMenu']//a[@href='#delete']")
     }
 
     // clickLogoutBtn()
@@ -53,6 +54,9 @@ class HomePage
                 break;
             case 'saveProject':
                 this.elements.saveProjectBtn().click();
+                break;
+            case 'deleteProject':
+                this.elements.deleteProjectBtn().click();
                 break;
 
             default:

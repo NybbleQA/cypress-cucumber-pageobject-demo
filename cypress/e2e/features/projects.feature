@@ -32,8 +32,10 @@ Feature: Projects CRUD
 
     # #
 
-    # Scenario: Delete an existing project successfully
+    Scenario: Delete an existing project successfully
 
-    # When 
-    # And 
-    # Then 
+    Given a project is created with "test" as name
+    When user clicks [Options] button for the project named "test"
+    And clicks [Delete] button on project's option menu
+    # And accepts the alert pop-up
+    Then the project named "test" should be deleted successfully
