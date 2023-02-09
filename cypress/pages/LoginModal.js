@@ -40,6 +40,22 @@ class LoginModal
       this.elements.passwordTextbox().type(Cypress.env('registered_password'))
     }
 
+    //////////////////////////////
+    typeText(fieldName, text) 
+    {
+        switch (fieldName) 
+        {
+          case 'email':
+            this.elements.emailTextbox().type(text);
+            break;
+          case 'password':
+            this.elements.passwordTextbox().type(text);
+            break;
+          default:
+            throw new Error(`Field "${fieldName}" not found.`);
+        }
+    }
+
 }
 
 export const loginModal = new LoginModal();

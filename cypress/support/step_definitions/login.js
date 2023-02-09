@@ -14,6 +14,8 @@ const password = "12345"        //''
 //         //cy.visit("https://todo.ly/");
 //     });
 
+////////// SCENARIO: Successful login with an existing user 
+
 When("user clicks on [Login] button on todo.ly main page", () => 
     {
         mainPage.clickLogin();
@@ -31,13 +33,42 @@ When("types '12345' in [Password] textbox", () =>
         //loginModal.typeRegisteredPassword()
     })
 
-When("clicks [Login] button on Login modal", () => 
-    {
-        loginModal.clickLoginBtn()
-    })
+// --> SENT TO COMMON_STEPS.JS
+// When("clicks [Login] button on Login modal", () => 
+//     {
+//         loginModal.clickLoginBtn()
+//     })
 
 // --> SENT TO COMMON_STEPS.JS
 // Then("[Logout] button should be displayed on the top right of the page", () => 
 //     {
 //         homePage.elements.logoutBtn().should('be.visible')
 //     });
+
+////////// SCENARIO Outline: Unsuccessful login through invalid credentials
+
+When('user provides incorrect credentials', function(table)
+{
+    table.hashes().forEach(row =>
+        {
+            loginModal.typeText('email', row.email);
+            loginModal.typeText('password', row.password);
+        })
+})
+
+// When('types {string} in [Password] textbox', function(string)
+// {
+//     loginModal.typeText('password', string)
+
+// })
+
+// --> SENT TO COMMON_STEPS.JS
+// When("clicks [Login] button on Login modal", () => 
+//     {
+//         loginModal.clickLoginBtn()
+//     })
+
+Then('user should not be logged in', function()
+{
+    loginModal.elements.loginBtn().should('be.visible')
+})

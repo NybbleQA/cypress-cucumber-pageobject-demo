@@ -14,16 +14,16 @@ Feature: Login
 
     Then [Logout] button should be displayed on the top right of the page
 
-    #  Scenario Outline: Unsuccessful login through invalid credentials
+    
+    Scenario Outline: Unsuccessful login through invalid credentials
 
-    #  When user types "<email>" in [Email] textbox
-    #  And types "<password>" in [Password] textbox
-    #  And clicks [Login] button on Login modal
+    When user provides incorrect credentials
+    |  email   |   password    |
+    |  ""      |   123456       |
+    |  fhr2@fhr1.com   |   ""  |
+    |       ""      |    ""    |
+    And clicks [Login] button on Login modal
 
-    #  Then user should not be logged in
+    Then user should not be logged in
 
-    #  Examples:
-    #  |  email   |   password    |
-    #  |  ""      |   12345       |
-    #  |  fhr1@fhr1.com   |   ""  |
-    #  |  ""  |  ""  |
+     

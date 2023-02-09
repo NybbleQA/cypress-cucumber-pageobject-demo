@@ -6,6 +6,7 @@ import { genericMethods } from "cypress/utils/GenericMethods";
 
 asd = genericMethods.makeid(5) + "@mail.com"
 
+////////// SCENARIO: 
 
 When("user clicks on [Sign Up Free] button on todo.ly main page", () =>
 {
@@ -36,4 +37,6 @@ When("clicks [Signup] button on Signup modal", () =>
 {
     signupModal.clickSignUpBtn();
 })
+
+////////// SCENARIO: 
 
